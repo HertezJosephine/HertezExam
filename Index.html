@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Question</title>
+	<style>
+		body{ background-color: #5a4c67; }
+		
+		#disp
+		{
+			margin-top: 15%;
+			border-radius: 25px;
+			background-color: steelblue;
+			padding: 25px;
+		}
+		
+		#disp p
+		{
+			text-indent: 25px;
+			font-family: Book Antiqua;
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+</body>
+<script>
+var regularCoffeeBagsCount = parseInt( prompt( "How many bags of regular coffee do you want to buy?\n$9/bag:" ) );
+
+// re-prompt while input is incorrect or negative
+while ( regularCoffeeBagsCount.toString() == "NaN" || regularCoffeeBagsCount < 0 )
+	regularCoffeeBagsCount = parseInt( prompt( "Invalid input.\nHow many bags of regular coffee do you want to buy?\n$9/bag:" ) );
+
+var decafCoffeeBagsCount = parseInt( prompt( "How many decaf?\n$8/bag:" ) );
+while ( decafCoffeeBagsCount.toString() == "NaN" || decafCoffeeBagsCount < 0 )
+	decafCoffeeBagsCount = parseInt( prompt( "Invalid input.\nHow many decaf?\n$8/bag:" ) );
+
+var mochaCoffeeBagsCount = parseInt( prompt( "How many mocha?\n$11/bag:" ) );
+while ( mochaCoffeeBagsCount.toString() == "NaN" || mochaCoffeeBagsCount < 0 )
+	mochaCoffeeBagsCount = parseInt( prompt( "Invalid input.\nHow many mocha?\n$11/bag:" ) );
+
+var total = regularCoffeeBagsCount * 9 + decafCoffeeBagsCount * 8 + mochaCoffeeBagsCount * 11;
+
+// output calculations
+if ( regularCoffeeBagsCount > 0 )
+	writeForTheLazy( regularCoffeeBagsCount, 9, "regular" );
+if ( decafCoffeeBagsCount > 0 )
+	writeForTheLazy( decafCoffeeBagsCount, 8, "decaf" );
+if ( mochaCoffeeBagsCount > 0 )
+	writeForTheLazy( mochaCoffeeBagsCount, 11, "mocha" );
+
+// check for discounts
+if ( total > 100 )
+{
+	document.write( "You bought more than $100. You have a <b>$15</b> discount!<br>" );
+	total -= 15;
+}
+
+document.write( "Your total purchase cost is $<b>" + total + "</b> dollars." );
+
+function writeForTheLazy( bagCount, bagPrice, name )
+{
+	document.write( "You purchased " + bagCount + ( bagCount == 1 ? " bag" : " bags" ) + " of " + name + ", totaling $<b>" + ( bagCount * bagPrice ) + "</b> dollars.<br>" );
+}
+</script>
+</html>
